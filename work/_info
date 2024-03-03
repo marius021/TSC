@@ -1,0 +1,133 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.1
+vinstr_register
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+DXx4 work 18 instr_register_pkg 0 22 5=E9o1n^@4Bl6bzM<7R0]3
+!s110 1709490664
+!i10b 1
+!s100 jXkoF3KRNA2oP5n0N[dM31
+I[MU0WA8^F]jbnj^IhmIB=1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s105 instr_register_sv_unit
+S1
+Z2 dC:/Users/Dell/Desktop/TSC/TSC
+w1709490642
+8C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv
+FC:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv
+L0 9
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1709490664.000000
+!s107 C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv|
+!i113 1
+Z4 o-work work -sv
+Z5 tCvgOpt 0
+Xinstr_register_pkg
+R0
+!s110 1709490596
+!i10b 1
+!s100 07LnI;Yi]W`RE;l_;z`G>3
+I5=E9o1n^@4Bl6bzM<7R0]3
+V5=E9o1n^@4Bl6bzM<7R0]3
+S1
+R2
+w1709490370
+8C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv
+FC:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1709490596.000000
+!s107 C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Dell/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv|
+!i113 1
+R4
+R5
+vinstr_register_test
+R0
+Z6 DXx4 work 18 instr_register_pkg 0 22 1@[@@8]Bz8U3UijE=^?YF0
+!s110 1709490506
+!i10b 1
+!s100 @N=XOV`;[WWiI<;VY_SjA2
+IhY9AIn9c3P1oX76:2a6<M1
+R1
+!s105 instr_register_test_sv_unit
+S1
+R2
+w1614777408
+8C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+FC:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1709490506.000000
+!s107 C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv|
+!i113 1
+R4
+R5
+Ytb_ifc
+R0
+R6
+!s110 1709490510
+!i10b 1
+!s100 9W>AVcHhBXii<Bfl@Xo5O2
+I]_Bd5LGzoC6b`Qj6]UXY41
+R1
+!s105 tb_ifc_sv_unit
+S1
+R2
+w1614777422
+8C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+FC:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1709490510.000000
+!s107 C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv|
+!i113 1
+R4
+R5
+vtop
+R0
+R6
+!s110 1709490502
+!i10b 1
+!s100 m1;JOPW1]MA=G;3EO?9043
+IZzOdY=aQ30=h47DWXiWPk1
+R1
+!s105 top_sv_unit
+S1
+R2
+w1709102438
+8C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv
+FC:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1709490502.000000
+!s107 C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Dell/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv|
+!i113 1
+R4
+R5

@@ -21,6 +21,8 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
   timeunit 1ns/1ns;
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
+  result_t result;
+  result_t op_result;
   // iw_reg e array -> de 32 de locatii
  // write to the register
   always@(posedge clk, negedge reset_n)   // write into register
@@ -29,7 +31,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin //putem incarca date in registru
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b}; // write pointer poate lua val intre 0 si 31
+      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, result}; // write pointer poate lua val intre 0 si 31
     end
 
   // read from the register
@@ -42,5 +44,18 @@ initial begin
   force operand_b = operand_a; // cause wrong value to be loaded into operand_b
 end
 `endif
+
+  always @(posedge clk , negedge reset_n)
+    case (opcode)
+    ZERO: op_result = 32'sd0;
+    PASSA: op_result = operand_a;
+    PASSB: op_result = operand_b;
+    ADD: op_result = operand_a + operand_b;
+    SUB: op_result = operand_a - operand_b;
+    MULT: op_result = operand_a * operand_b;
+    DIV: op_result = operand_a / operand_b;
+    MOD: op_result = operand_a % operand_b;
+    default: op_result = 'bx;
+  endcase
 
 endmodule: instr_register
