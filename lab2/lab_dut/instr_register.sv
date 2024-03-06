@@ -6,6 +6,8 @@
  *
  **********************************************************************/
 
+//dut-ul calculeaza si trimite rezultatul inapo
+
 module instr_register
 import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
 (input  logic          clk,
