@@ -23,7 +23,6 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
   timeunit 1ns/1ns;
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
-  result_t result;
   result_t op_result;
   // iw_reg e array -> de 32 de locatii
  // write to the register
@@ -33,7 +32,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin //putem incarca date in registru
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, result}; // write pointer poate lua val intre 0 si 31
+      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, op_result}; // write pointer poate lua val intre 0 si 31
     end
 
   // read from the register
