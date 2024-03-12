@@ -55,7 +55,8 @@ end
     ADD: op_result = operand_a + operand_b;
     SUB: op_result = operand_a - operand_b;
     MULT: op_result = operand_a * operand_b;
-    DIV: op_result = operand_a / operand_b;
+    DIV: if(operand_b === 0) op_result = 0; 
+    else op_result = operand_a / operand_b;
     MOD: op_result = operand_a % operand_b;
     default: op_result = 'bx;
   endcase

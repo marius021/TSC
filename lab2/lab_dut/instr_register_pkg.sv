@@ -22,8 +22,8 @@ package instr_register_pkg;
   
   typedef struct {   
     opcode_t  opc;  // operanzi
-    operand_t op_a;
-    operand_t op_b;
+    operand_t operand_a;
+    operand_t operand_b;
     result_t rezultat;
   } instruction_t;
 

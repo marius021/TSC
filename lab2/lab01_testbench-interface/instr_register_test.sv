@@ -22,10 +22,13 @@ module instr_register_test
 
   parameter WR_NR = 20;
   parameter RD_NR = 20;
-
-   instruction_t  iw_reg_test [0:31];
-
   int seed = 555; // 
+  instruction_t  iw_reg_test [31:0];
+  instruction_t instruction_word_test;
+  operand_t local_result = 0;
+   //logic local_result[31:0]; // Moved declaration above the loop
+
+  
 
   initial begin
     $display("\n\n***********************************************************");
@@ -71,8 +74,6 @@ module instr_register_test
 
   function void randomize_transaction;
   // trebuie sa salvam valorile generate
-    iw_reg_test [0:31]; 
-
     // A later lab will replace this function with SystemVerilog
     // constrained random values
     //
@@ -80,8 +81,9 @@ module instr_register_test
     // addresses of 0, 1 and 2.  This will be replaceed with randomizeed
     // write_pointer values in a later lab
     //
-    iw_reg_test[write_pointer] <= {opcode, operand_a, operand_b};
+
     static int temp = 0; // variabila de tip static -> la a 2-a chemare aloca doar a
+    iw_reg_test[write_pointer] <= '{opcode, operand_a, operand_b, 4'b0};
     operand_a     <= $random(seed)%16;                 // between -15 and 15
     operand_b     <= $unsigned($random)%16;            // between 0 and 15
     opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
@@ -96,38 +98,50 @@ module instr_register_test
     $display("  operand_b = %0d\n", operand_b);
   endfunction: print_transaction
 
-  function void check_result;
-
-  
-  for (int i = 0; i<RD_NR; i++) begin
-     logic local_result[31:0];
-    if(instruction_word.op_a !== operand_a)
-      $display("Eroare, numerele sunt diferite");
-
-
-  if(iw_reg_test) begin
-  case (instruction_word)
-      ZERO: local_result = 0;
-      PASSA: local_result = instruction_word.operand_a;
-      PASSB: local_result = instruction_word.operand_b;
-      ADD: local_result = instruction_word.operand_a + instruction_word.operand_b;
-      SUB: local_result = instruction_word.operand_a - instruction_word.operand_b;
-      MULT: local_result = instruction_word.operand_a * instruction_word.operand_b;
-      DIV: local_result = instruction_word.operand_a / instruction_word.operand_b;
-      MOD: local_result = instruction_word.operand_a % instruction_word.operand_b;
-      default: local_result = 'bx;
-        endcase
-      end
-    end
-  endfunction
-
-  function void print_results;
+   function void print_results;
     $display("Read from register location %0d: ", read_pointer);
     $display("  opcode = %0d (%s)", instruction_word.opc, instruction_word.opc.name);
-    $display("  operand_a = %0d",   instruction_word.op_a);
-    $display("  operand_b = %0d\n", instruction_word.op_b);
+    $display("  operand_a = %0d",   instruction_word.operand_a);
+    $display("  operand_b = %0d\n", instruction_word.operand_b);
     $display("  rezultat = %0d\n", instruction_word.rezultat);
   endfunction: print_results
+
+function void check_result();
+
+  for (int i = 0; i<RD_NR; i++) begin
+    $display("read_pointer = %0d", read_pointer);
+    instruction_word_test = iw_reg_test[read_pointer];
+    if(instruction_word_test.operand_a !== operand_a)begin
+      //$display("Eroare, numerele sunt diferite");
+    end
+
+    if(instruction_word_test.operand_b !== operand_b) begin
+      //$display("eroare numerele sunt diferite")
+      //
+    end
+
+   
+    case(opcode)
+        ZERO: local_result = 0;
+        PASSA: local_result = instruction_word_test.operand_a;
+        PASSB: local_result = instruction_word_test.operand_b;
+        ADD: local_result = instruction_word_test.operand_a + instruction_word_test.operand_b;
+        SUB: local_result = instruction_word_test.operand_a - instruction_word_test.operand_b;
+        MULT: local_result = instruction_word_test.operand_a * instruction_word_test.operand_b;
+        DIV: if(instruction_word_test.operand_b === 0) local_result = 0; 
+        else local_result = instruction_word_test.operand_a / instruction_word_test.operand_b;
+        MOD: local_result = instruction_word_test.operand_a % instruction_word_test.operand_b;
+      endcase 
+
+  if(local_result === instruction_word_test.rezultat) begin
+    $display("Rezultate asemanatoare");
+  end else begin
+    $display("Eroare");
+  end // Close the loop
+end
+endfunction
+
+ 
 
 
 
