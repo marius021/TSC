@@ -26,10 +26,12 @@ module instr_register_test
   instruction_t  iw_reg_test [31:0];
   instruction_t instruction_word_test;
   operand_t local_result = 0;
+
+  parameter read_order;
+  parameter write_order;
    //logic local_result[31:0]; // Moved declaration above the loop
 
   
-
   initial begin
     $display("\n\n***********************************************************");
     $display(    "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
@@ -65,7 +67,7 @@ module instr_register_test
 
     @(posedge clk) ;
     $display("\n***********************************************************");
-    $display(  "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
+    $display(  "***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******");
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
@@ -82,12 +84,19 @@ module instr_register_test
     // write_pointer values in a later lab
     //
 
+
     static int temp = 0; // variabila de tip static -> la a 2-a chemare aloca doar a
-    iw_reg_test[write_pointer] <= '{opcode, operand_a, operand_b, 4'b0};
-    operand_a     <= $random(seed)%16;                 // between -15 and 15
-    operand_b     <= $unsigned($random)%16;            // between 0 and 15
-    opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
-    write_pointer <= temp++;
+    iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
+    operand_a     = $random(seed)%16;                 // between -15 and 15
+    operand_b    = $unsigned($random)%16;            // between 0 and 15
+    opcode        = opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
+    // write_pointer = $unsigned(random)
+    write_pointer = temp++;
+    $display("operand_a = %0d \n
+              operand_b = %0d \n
+              opcode = %0d \n
+              time = %0t
+              iw_reg_test[write_pointer] = %0d \n ", operand_a, operand_b, opcode, iw_reg_test[write_pointer], $time);
   endfunction: randomize_transaction
 // ramdomize genereaza un nr pe 32 de biti
 
@@ -106,18 +115,21 @@ module instr_register_test
     $display("  rezultat = %0d\n", instruction_word.rezultat);
   endfunction: print_results
 
-function void check_result();
+function void check_result(); //
 
   for (int i = 0; i<RD_NR; i++) begin
     $display("read_pointer = %0d", read_pointer);
     instruction_word_test = iw_reg_test[read_pointer];
-    if(instruction_word_test.operand_a !== operand_a)begin
-      //$display("Eroare, numerele sunt diferite");
+    if(instruction_word_test.operand_a == operand_a)begin
+      $display("Eroare, numerele sunt diferite");
     end
 
-    if(instruction_word_test.operand_b !== operand_b) begin
-      //$display("eroare numerele sunt diferite")
-      //
+    if(instruction_word_test.operand_b == operand_b) begin
+      $display("eroare numerele sunt diferite")
+    end
+
+    if(instruction_word_test.opc == opc)begin
+      $display("Eroare")
     end
 
    
@@ -142,8 +154,9 @@ end
 endfunction
 
  
-
-
+// iw_reg -> array
+// write_pointer 
+// de testat cele 9 cazuri | functia de final_report
 
 
 endmodule: instr_register_test
