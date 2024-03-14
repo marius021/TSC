@@ -157,6 +157,7 @@ endfunction
 // iw_reg -> array
 // write_pointer 
 // de testat cele 9 cazuri | functia de final_report
+// ? tema
 
 
 endmodule: instr_register_test
