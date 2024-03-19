@@ -26,9 +26,11 @@ module instr_register_test
   instruction_t  iw_reg_test [31:0];
   instruction_t instruction_word_test;
   operand_t local_result = 0;
+  static int temp = 0;    // variabila de tip static -> la a 2-a chemare aloca doar a
+  int not_passed_tests = 0;
 
-  parameter read_order;
-  parameter write_order;
+  int read_order;
+  int write_order;
    //logic local_result[31:0]; // Moved declaration above the loop
 
   
@@ -47,9 +49,45 @@ module instr_register_test
     repeat (2) @(posedge clk) ;     // hold in reset for 2 clock cycles
     reset_n        = 1'b1;          // deassert reset_n (active low)
 
-    $display("\nWriting values to register stack...");
+    for(int j=0; j<9; j++)begin   // testam case urile
+      if(j==0)begin
+        read_order = 0;
+        write_order = 0;
+      end else if(j ==1)begin
+        read_order = 0;
+        write_order = 1;
+      end else if(j ==2)begin
+        read_order = 0;
+        write_order = 2;
+      end else if(j ==3)begin
+        read_order = 1;
+        write_order = 0;
+      end else if(j ==4)begin
+        read_order = 1;
+        write_order = 1;
+      end else if(j ==5)begin
+        read_order = 1;
+        write_order = 2;
+      end else if(j ==6)begin
+        read_order = 2;
+        write_order = 0;
+      end else if(j ==7)begin
+        read_order = 2;
+        write_order = 1;
+      end else if(j ==8)begin
+        read_order = 2;
+        write_order = 2;
+      end
+
+      if (write_order == 0) begin  // definim de unde pleaca temp, aici pleaca de la 0
+        temp = 0;
+      end else if (write_order == 1) begin
+        temp = 31;
+      end
+
+      $display("\nWriting values to register stack...");
     @(posedge clk) load_en = 1'b1;  // enable writing to register
-    repeat (3) begin
+    repeat (WR_NR) begin
       @(posedge clk) randomize_transaction;
       @(negedge clk) print_transaction;     
     end
@@ -58,11 +96,22 @@ module instr_register_test
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
     for (int i=0; i<=RD_NR; i++) begin
+
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
+
+      if (read_order == 0) begin
+        read_pointer = i;
+      end else if (read_pointer == 1) begin
+        read_pointer = RD_NR - i;
+      end else begin
+        read_pointer = $unsigned($random)%32;
+      end
+
       @(posedge clk) read_pointer = i;
       @(negedge clk) print_results;
+      @(posedge clk) check_result;
     end
 
     @(posedge clk) ;
@@ -71,7 +120,12 @@ module instr_register_test
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
+
+
+    end
+
     $finish;
+
   end
 
   function void randomize_transaction;
@@ -84,19 +138,22 @@ module instr_register_test
     // write_pointer values in a later lab
     //
 
+    if (write_order == 0) begin
+          write_pointer = temp++;
+      end else if (write_order == 1) begin
+        write_pointer = temp--;
+      end else begin
+        write_pointer = $unsigned($random)%32;
+      end
+  
 
-    static int temp = 0; // variabila de tip static -> la a 2-a chemare aloca doar a
+ 
     iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
     operand_a     = $random(seed)%16;                 // between -15 and 15
     operand_b    = $unsigned($random)%16;            // between 0 and 15
     opcode        = opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
     // write_pointer = $unsigned(random)
     write_pointer = temp++;
-    $display("operand_a = %0d \n
-              operand_b = %0d \n
-              opcode = %0d \n
-              time = %0t
-              iw_reg_test[write_pointer] = %0d \n ", operand_a, operand_b, opcode, iw_reg_test[write_pointer], $time);
   endfunction: randomize_transaction
 // ramdomize genereaza un nr pe 32 de biti
 
@@ -115,24 +172,20 @@ module instr_register_test
     $display("  rezultat = %0d\n", instruction_word.rezultat);
   endfunction: print_results
 
-function void check_result(); //
+function void check_result; //
 
-  for (int i = 0; i<RD_NR; i++) begin
-    $display("read_pointer = %0d", read_pointer);
     instruction_word_test = iw_reg_test[read_pointer];
-    if(instruction_word_test.operand_a == operand_a)begin
-      $display("Eroare, numerele sunt diferite");
+
+    if(instruction_word_test.operand_a != instr_register_test.operand_a)begin
+      $display("operand a diferit cu ce s-a generat");
+      $display("operand_a = %0d, operand_a = %0d", instruction_word_test.operand_a, instruction_word.operand_a);
     end
 
-    if(instruction_word_test.operand_b == operand_b) begin
-      $display("eroare numerele sunt diferite")
+    if(instruction_word_test.operand_b != instr_register_test.operand_b)begin
+      $display("operand b diferit cu ce s-a generat");
+      $display("operand_b = %0d, operand_b = %0d", instruction_word_test.operand_b, instruction_word.operand_b);
     end
-
-    if(instruction_word_test.opc == opc)begin
-      $display("Eroare")
-    end
-
-   
+    
     case(opcode)
         ZERO: local_result = 0;
         PASSA: local_result = instruction_word_test.operand_a;
@@ -147,10 +200,16 @@ function void check_result(); //
 
   if(local_result === instruction_word_test.rezultat) begin
     $display("Rezultate asemanatoare");
+    $display("Rezultatul calculat: %0d", instruction_word_test.rezultat);
+    $display("Rezultatul stocat: %0d", local_result);
+
   end else begin
-    $display("Eroare");
+    
+    not_passed_tests = not_passed_tests + 1;
+    $display("Rezultatul calculat: %0d", instruction_word_test.rezultat);
+    $display("rezultatul stocat : %0d ", local_result);
   end // Close the loop
-end
+
 endfunction
 
  
