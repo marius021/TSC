@@ -29,7 +29,7 @@ module instr_register_test
   static int temp = 0;    // variabila de tip static -> la a 2-a chemare aloca doar a
   int not_passed_tests = 0;
 
-  int read_order;
+  int read_order; // ordinea incremental decremental order
   int write_order;
    //logic local_result[31:0]; // Moved declaration above the loop
 
@@ -216,7 +216,6 @@ endfunction
 // iw_reg -> array
 // write_pointer 
 // de testat cele 9 cazuri | functia de final_report
-// ? tema
 
 
 endmodule: instr_register_test

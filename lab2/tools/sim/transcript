@@ -1,0 +1,9 @@
+# do run.do
+# ** Error: can't set "::PrefMain(file)": couldn't open "../reports/regression_transcript/transcript": no such file or directory
+# Error in macro ./run.do line 8
+# couldn't open "../reports/regression_transcript/transcript": no such file or directory
+#     while executing
+# "Transcript::open_file ::PrefMain file w"
+#     (write trace on "::PrefMain(file)")
+#     invoked from within
+# "transcript file ../reports/regression_transcript/transcript"
