@@ -1,0 +1,133 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.1
+vinstr_register
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 DXx4 work 18 instr_register_pkg 0 22 >[;4nllX5cnVFln@n8=U`2
+!s110 1710878819
+!i10b 1
+!s100 `kP8d0^lmm=>U@1KInz;40
+IjVh[8>1cAQSeaQKe_[zZA0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 instr_register_sv_unit
+S1
+Z3 dC:/Users/Zbook/Desktop/TSC/TSC
+w1710273557
+8C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv
+FC:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv
+L0 11
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1710878819.000000
+!s107 C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register.sv|
+!i113 1
+Z5 o-work work -sv
+Z6 tCvgOpt 0
+Xinstr_register_pkg
+R0
+!s110 1710878816
+!i10b 1
+!s100 U?@CT^U4J6]cE0=iiCI_=0
+I>[;4nllX5cnVFln@n8=U`2
+V>[;4nllX5cnVFln@n8=U`2
+S1
+R3
+w1710264959
+8C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv
+FC:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv
+L0 5
+R4
+r1
+!s85 0
+31
+!s108 1710878816.000000
+!s107 C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab_dut/instr_register_pkg.sv|
+!i113 1
+R5
+R6
+vinstr_register_test
+R0
+R1
+!s110 1710878822
+!i10b 1
+!s100 kE`=]__G0TITUUGT;X?R33
+I[^`aAHJi4@0g>ff_1D[n70
+R2
+!s105 instr_register_test_sv_unit
+S1
+R3
+w1710878711
+8C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+FC:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv
+L0 8
+R4
+r1
+!s85 0
+31
+!s108 1710878822.000000
+!s107 C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/instr_register_test.sv|
+!i113 1
+R5
+R6
+Ytb_ifc
+R0
+R1
+!s110 1710878829
+!i10b 1
+!s100 9W>AVcHhBXii<Bfl@Xo5O2
+IbZn08I5:CTRSb<ogzoVjO3
+R2
+!s105 tb_ifc_sv_unit
+S1
+R3
+w1614777422
+8C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+FC:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv
+L0 5
+R4
+r1
+!s85 0
+31
+!s108 1710878829.000000
+!s107 C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/tb_ifc.sv|
+!i113 1
+R5
+R6
+vtop
+R0
+R1
+!s110 1710878826
+!i10b 1
+!s100 m1;JOPW1]MA=G;3EO?9043
+I?VmJc;GHMgPDXMeJ<Q;`N1
+R2
+!s105 top_sv_unit
+S1
+R3
+w1709102438
+8C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv
+FC:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv
+L0 5
+R4
+r1
+!s85 0
+31
+!s108 1710878826.000000
+!s107 C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Zbook/Desktop/TSC/TSC/lab2/lab01_testbench-interface/top.sv|
+!i113 1
+R5
+R6
