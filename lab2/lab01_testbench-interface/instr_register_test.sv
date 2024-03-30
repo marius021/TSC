@@ -29,8 +29,8 @@ module instr_register_test
   static int temp = 0;    // variabila de tip static -> la a 2-a chemare aloca doar a
   int not_passed_tests = 0;
 
-  int read_order; // ordinea incremental decremental order
-  int write_order;
+  parameter READ_ORDER = 0; // ordinea incremental decremental order
+  parameter WRITE_ORDER = 0;
    //logic local_result[31:0]; // Moved declaration above the loop
 
   
@@ -51,37 +51,37 @@ module instr_register_test
 
     for(int j=0; j<9; j++)begin   // testam case urile
       if(j==0)begin
-        read_order = 0;
-        write_order = 0;
+        READ_ORDER = 0;
+        WRITE_ORDER = 0;
       end else if(j ==1)begin
-        read_order = 0;
-        write_order = 1;
+        READ_ORDER = 0;
+        WRITE_ORDER = 1;
       end else if(j ==2)begin
-        read_order = 0;
-        write_order = 2;
+        READ_ORDER = 0;
+        WRITE_ORDER = 2;
       end else if(j ==3)begin
-        read_order = 1;
-        write_order = 0;
+        READ_ORDER = 1;
+        WRITE_ORDER = 0;
       end else if(j ==4)begin
-        read_order = 1;
-        write_order = 1;
+        READ_ORDER = 1;
+        WRITE_ORDER = 1;
       end else if(j ==5)begin
-        read_order = 1;
-        write_order = 2;
+        READ_ORDER = 1;
+        WRITE_ORDER = 2;
       end else if(j ==6)begin
-        read_order = 2;
-        write_order = 0;
+        READ_ORDER = 2;
+        WRITE_ORDER = 0;
       end else if(j ==7)begin
-        read_order = 2;
-        write_order = 1;
+        READ_ORDER = 2;
+        WRITE_ORDER = 1;
       end else if(j ==8)begin
-        read_order = 2;
-        write_order = 2;
+        READ_ORDER = 2;
+        WRITE_ORDER = 2;
       end
 
-      if (write_order == 0) begin  // definim de unde pleaca temp, aici pleaca de la 0
+      if (WRITE_ORDER == 0) begin  // definim de unde pleaca temp, aici pleaca de la 0
         temp = 0;
-      end else if (write_order == 1) begin
+      end else if (WRITE_ORDER == 1) begin
         temp = 31;
       end
 
@@ -101,7 +101,7 @@ module instr_register_test
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
 
-      if (read_order == 0) begin
+      if (READ_ORDER == 0) begin
         read_pointer = i;
       end else if (read_pointer == 1) begin
         read_pointer = RD_NR - i;
@@ -138,9 +138,9 @@ module instr_register_test
     // write_pointer values in a later lab
     //
 
-    if (write_order == 0) begin
+    if (WRITE_ORDER == 0) begin
           write_pointer = temp++;
-      end else if (write_order == 1) begin
+      end else if (WRITE_ORDER == 1) begin
         write_pointer = temp--;
       end else begin
         write_pointer = $unsigned($random)%32;
