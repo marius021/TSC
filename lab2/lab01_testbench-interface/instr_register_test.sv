@@ -20,6 +20,7 @@ module instr_register_test
 
   timeunit 1ns/1ns; 
 
+  int file_descriptor;
   parameter WR_NR = 20;
   parameter RD_NR = 20;
   int seed = 555; // 
@@ -28,9 +29,11 @@ module instr_register_test
   operand_t local_result = 0;
   static int temp = 0;    // variabila de tip static -> la a 2-a chemare aloca doar a
   int not_passed_tests = 0;
+  
 
   parameter READ_ORDER = 0; // ordinea incremental decremental order
   parameter WRITE_ORDER = 0;
+  parameter TEST_NAME ="";
    //logic local_result[31:0]; // Moved declaration above the loop
 
   
@@ -49,41 +52,13 @@ module instr_register_test
     repeat (2) @(posedge clk) ;     // hold in reset for 2 clock cycles
     reset_n        = 1'b1;          // deassert reset_n (active low)
 
-    for(int j=0; j<9; j++)begin   // testam case urile
-      if(j==0)begin
-        READ_ORDER = 0;
-        WRITE_ORDER = 0;
-      end else if(j ==1)begin
-        READ_ORDER = 0;
-        WRITE_ORDER = 1;
-      end else if(j ==2)begin
-        READ_ORDER = 0;
-        WRITE_ORDER = 2;
-      end else if(j ==3)begin
-        READ_ORDER = 1;
-        WRITE_ORDER = 0;
-      end else if(j ==4)begin
-        READ_ORDER = 1;
-        WRITE_ORDER = 1;
-      end else if(j ==5)begin
-        READ_ORDER = 1;
-        WRITE_ORDER = 2;
-      end else if(j ==6)begin
-        READ_ORDER = 2;
-        WRITE_ORDER = 0;
-      end else if(j ==7)begin
-        READ_ORDER = 2;
-        WRITE_ORDER = 1;
-      end else if(j ==8)begin
-        READ_ORDER = 2;
-        WRITE_ORDER = 2;
-      end
-
+  
       if (WRITE_ORDER == 0) begin  // definim de unde pleaca temp, aici pleaca de la 0
         temp = 0;
       end else if (WRITE_ORDER == 1) begin
         temp = 31;
       end
+    
 
       $display("\nWriting values to register stack...");
     @(posedge clk) load_en = 1'b1;  // enable writing to register
@@ -112,8 +87,8 @@ module instr_register_test
       @(posedge clk) read_pointer = i;
       @(negedge clk) print_results;
       @(posedge clk) check_result;
-    end
 
+ 
     @(posedge clk) ;
     $display("\n***********************************************************");
     $display(  "***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******");
@@ -123,10 +98,40 @@ module instr_register_test
 
 
     end
+    
+    final_report;  //apelam functia final_report
 
     $finish;
 
   end
+
+
+  function final_report;
+
+  file_descriptor = $fopen("../reports/regression_transcript/regression_status.txt", "a");
+     if (file_descriptor != 0) begin
+
+       if (not_passed_tests != 0) begin
+        $fwrite(file_descriptor, "\n**\n");
+        $fwrite(file_descriptor, "**                         STATISTICS                      \n");
+        $fwrite(file_descriptor, "               TEST NAME: %s                      \n", TEST_NAME);
+        $fwrite(file_descriptor, "               READ_ORDER = %0d ,  WRITE_ORDER = %0d    \n",READ_ORDER, WRITE_ORDER);
+        $fwrite(file_descriptor, "               TESTS FAILED = %0d  TOTAL TESTS =  %0d   \n",not_passed_tests, (RD_NR));
+        $fwrite(file_descriptor, "               STATUS: FAILED                            \n\n");
+        $fwrite(file_descriptor, "**\n\n");
+
+       end else begin
+        $fwrite(file_descriptor, "\n**\n");
+        $fwrite(file_descriptor, "**                          STATISTICS                       \n");
+        $fwrite(file_descriptor, "               TEST NAME: %s                      \n", TEST_NAME);
+        $fwrite(file_descriptor, "               READ_ORDER = %0d ,  WRITE_ORDER = %0d    \n",READ_ORDER, WRITE_ORDER);
+        $fwrite(file_descriptor, "               TESTS FAILED = %0d  TOTAL TESTS =  %0d   *\n",not_passed_tests, (RD_NR));
+        $fwrite(file_descriptor, "               STATUS :  PASSED                       \n\n");
+        $fwrite(file_descriptor, "**\n\n");
+
+       end
+     end
+   endfunction: final_report
 
   function void randomize_transaction;
   // trebuie sa salvam valorile generate

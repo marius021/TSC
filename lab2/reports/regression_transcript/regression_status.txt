@@ -1,0 +1,20 @@
+
+**
+**             STATISTICS                      
+               TEST NAME: Test_Simulare                      
+               READ_ORDER = 0 ,  WRITE_ORDER = 0    
+               TESTS FAILED = 6  TOTAL TESTS =  10   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**             STATISTICS                       
+               TEST NAME: Test_Simulare                      
+               READ_ORDER = 1 ,  WRITE_ORDER = 1    
+               TESTS FAILED = 0  TOTAL TESTS =  20   *
+               STATUS :  PASSED                       
+
+**
+
