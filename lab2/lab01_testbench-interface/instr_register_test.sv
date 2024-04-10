@@ -23,7 +23,8 @@ module instr_register_test
   int file_descriptor;
   parameter WR_NR = 20;
   parameter RD_NR = 20;
-  int seed = 555; // 
+  parameter SEED_VALUE; 
+  int seed_val = SEED_VALUE; // 
   instruction_t  iw_reg_test [31:0];
   instruction_t instruction_word_test;
   operand_t local_result = 0;
@@ -154,7 +155,7 @@ module instr_register_test
 
  
     iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
-    operand_a     = $random(seed)%16;                 // between -15 and 15
+    operand_a     = $random(seed_val)%16;                 // between -15 and 15
     operand_b    = $unsigned($random)%16;            // between 0 and 15
     opcode        = opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
     // write_pointer = $unsigned(random)
