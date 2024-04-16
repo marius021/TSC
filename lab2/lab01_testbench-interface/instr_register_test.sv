@@ -82,15 +82,15 @@ module instr_register_test
       end else if (read_pointer == 1) begin
         read_pointer = RD_NR - i;
       end else begin
-        read_pointer = $unsigned($random)%32;
+        read_pointer = $unsigned($random(seed_val))%32;
       end
 
       @(posedge clk) read_pointer = i;
       @(negedge clk) print_results;
       @(posedge clk) check_result;
-
- 
-    @(posedge clk) ;
+    end
+  
+   
     $display("\n***********************************************************");
     $display(  "***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******");
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
@@ -98,10 +98,10 @@ module instr_register_test
     $display(  "***********************************************************\n");
 
 
-    end
     
     final_report;  //apelam functia final_report
-
+    not_passed_tests = 0;
+    @(posedge clk) ;
     $finish;
 
   end
@@ -149,17 +149,16 @@ module instr_register_test
       end else if (WRITE_ORDER == 1) begin
         write_pointer = temp--;
       end else begin
-        write_pointer = $unsigned($random)%32;
+        write_pointer = $unsigned($random(seed_val))%32;
       end
   
 
- 
-    iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
     operand_a     = $random(seed_val)%16;                 // between -15 and 15
-    operand_b    = $unsigned($random)%16;            // between 0 and 15
-    opcode        = opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
+    operand_b    = $unsigned($random(seed_val))%16;            // between 0 and 15
+    opcode        = opcode_t'($unsigned($random(seed_val))%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
     // write_pointer = $unsigned(random)
-    write_pointer = temp++;
+    iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
+    
   endfunction: randomize_transaction
 // ramdomize genereaza un nr pe 32 de biti
 
@@ -182,17 +181,28 @@ function void check_result; //
 
     instruction_word_test = iw_reg_test[read_pointer];
 
-    if(instruction_word_test.operand_a != instr_register_test.operand_a)begin
+    if(instruction_word_test.operand_a === 'hxx) begin
+
+          return;
+      end
+
+    if(instruction_word_test.operand_a !== instruction_word.operand_a)begin
       $display("operand a diferit cu ce s-a generat");
+      $display("read_pointer = %0d", read_pointer);
       $display("operand_a = %0d, operand_a = %0d", instruction_word_test.operand_a, instruction_word.operand_a);
     end
 
-    if(instruction_word_test.operand_b != instr_register_test.operand_b)begin
+    if(instruction_word_test.operand_b !== instruction_word.operand_b)begin
       $display("operand b diferit cu ce s-a generat");
+       $display("read_pointer = %0d", read_pointer);
       $display("operand_b = %0d, operand_b = %0d", instruction_word_test.operand_b, instruction_word.operand_b);
     end
     
-    case(opcode)
+     $display("operand_a = %0d", instruction_word_test.operand_a);
+    $display("operand_b = %0d", instruction_word_test.operand_b);
+   $display("opcode = %0d (%s)", opcode , opcode.name);
+
+    case(instruction_word_test.opc)
         ZERO: local_result = 0;
         PASSA: local_result = instruction_word_test.operand_a;
         PASSB: local_result = instruction_word_test.operand_b;
@@ -201,19 +211,27 @@ function void check_result; //
         MULT: local_result = instruction_word_test.operand_a * instruction_word_test.operand_b;
         DIV: if(instruction_word_test.operand_b === 0) local_result = 0; 
         else local_result = instruction_word_test.operand_a / instruction_word_test.operand_b;
-        MOD: local_result = instruction_word_test.operand_a % instruction_word_test.operand_b;
+        MOD: if(instruction_word_test.operand_b === 0) local_result = 0; 
+        else local_result = instruction_word_test.operand_a % instruction_word_test.operand_b;
+        POW: local_result = instruction_word_test.operand_a ** instruction_word_test.operand_b;
+
       endcase 
 
-  if(local_result === instruction_word_test.rezultat) begin
+  if(local_result === instruction_word.rezultat) begin
     $display("Rezultate asemanatoare");
-    $display("Rezultatul calculat: %0d", instruction_word_test.rezultat);
+    $display("Rezultatul calculat: %0d", instruction_word.rezultat);
     $display("Rezultatul stocat: %0d", local_result);
 
   end else begin
     
     not_passed_tests = not_passed_tests + 1;
-    $display("Rezultatul calculat: %0d", instruction_word_test.rezultat);
+     $display("Rezultate NEASEMANATOARE");
+     $display("read_pointer = %0d",read_pointer);
+     $display("op_a = %0d", instruction_word.operand_a);
+     $display("op_b = %0d", instruction_word.operand_b);
+    $display("Rezultatul calculat: %0d", instruction_word.rezultat);
     $display("rezultatul stocat : %0d ", local_result);
+
   end // Close the loop
 
 endfunction

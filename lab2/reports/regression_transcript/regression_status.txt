@@ -1,80 +1,210 @@
 
 **
-**             STATISTICS                      
-               TEST NAME: Test_Simulare                      
-               READ_ORDER = 0 ,  WRITE_ORDER = 0    
-               TESTS FAILED = 6  TOTAL TESTS =  10   
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 23  TOTAL TESTS =  32   
                STATUS: FAILED                            
 
 **
 
 
 **
-**             STATISTICS                       
-               TEST NAME: Test_Simulare                      
-               READ_ORDER = 1 ,  WRITE_ORDER = 1    
-               TESTS FAILED = 0  TOTAL TESTS =  20   *
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 24  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 25  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 19  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 19  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 19  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 19  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 19  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 20  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                          STATISTICS                       
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
                STATUS :  PASSED                       
 
 **
 
 
 **
-**                         STATISTICS                      
-               TEST NAME: case1_c                      
-               READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 24  TOTAL TESTS =  32   
-               STATUS: FAILED                            
-
-**
-
-
-**
-**                         STATISTICS                      
+**                          STATISTICS                       
                TEST NAME: case2_c                      
                READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 6  TOTAL TESTS =  32   
-               STATUS: FAILED                            
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
+               STATUS :  PASSED                       
 
 **
 
 
 **
-**                         STATISTICS                      
+**                          STATISTICS                       
                TEST NAME: case3_c                      
                READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 23  TOTAL TESTS =  32   
-               STATUS: FAILED                            
-
-**
-
-
-**
-**                         STATISTICS                      
-               TEST NAME: case1_c                      
-               READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 24  TOTAL TESTS =  32   
-               STATUS: FAILED                            
-
-**
-
-
-**
-**                         STATISTICS                      
-               TEST NAME: case2_c                      
-               READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 6  TOTAL TESTS =  32   
-               STATUS: FAILED                            
-
-**
-
-
-**
-**                         STATISTICS                      
-               TEST NAME: case3_c                      
-               READ_ORDER = 2 ,  WRITE_ORDER = 2    
-               TESTS FAILED = 23  TOTAL TESTS =  32   
-               STATUS: FAILED                            
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
+               STATUS :  PASSED                       
 
 **
 

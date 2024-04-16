@@ -1,21 +1,21 @@
 # 1
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 08:55:17 on Apr 10,2024
+# Start time: 17:07:31 on Apr 16,2024
 # vlog -sv -timescale 1ps/1ps -work work -f sources.txt 
 # -- Compiling package instr_register_pkg
 # -- Compiling module instr_register
 # -- Importing package instr_register_pkg
 # -- Compiling module instr_register_test
-# ** Warning: ../lab01_testbench-interface/instr_register_test.sv(103): (vlog-2240) Treating stand-alone use of function 'final_report' as an implicit VOID cast.
+# ** Warning: ../lab01_testbench-interface/instr_register_test.sv(102): (vlog-2240) Treating stand-alone use of function 'final_report' as an implicit VOID cast.
 # ** Warning: ../lab01_testbench-interface/instr_register_test.sv(110): (vlog-2250) Function "final_report" has no return value assignment.
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 08:55:17 on Apr 10,2024, Elapsed time: 0:00:00
+# End time: 17:07:31 on Apr 16,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 2
 # vsim -novopt -quiet -nocoverage "+notimingchecks" "+nowarnTSCALE" -sva top -GTEST_NAME=case2_c -GWR_NR=50 -GSEED_VALUE=262444 -GRD_NR=32 -GWRITE_ORDER=2 -GREAD_ORDER=2 
-# Start time: 08:55:17 on Apr 10,2024
+# Start time: 17:07:31 on Apr 16,2024
 # 
 # 
 # ***********************************************************
@@ -27,905 +27,948 @@
 # Reseting the instruction register...
 # 
 # Writing values to register stack...
-# Writing to register location 0: 
-#   opcode = 6 (DIV)
-#   operand_a = 0
-#   operand_b = 0
-# 
-# Writing to register location 1: 
+# FROM DUT:
+# operand_a  = x
+# operand_b  = x
+# opcode  = x ()
+# WRITE_POINTER=0
+# rezultat  = x
+# Writing to register location 16: 
 #   opcode = 6 (DIV)
 #   operand_a = 0
 #   operand_b = 14
 # 
-# Writing to register location 2: 
-#   opcode = 2 (PASSB)
-#   operand_a = 14
-#   operand_b = 14
-# 
-# Writing to register location 3: 
-#   opcode = 5 (MULT)
-#   operand_a = -2
-#   operand_b = 2
-# 
-# Writing to register location 4: 
-#   opcode = 2 (PASSB)
-#   operand_a = 2
-#   operand_b = 5
-# 
-# Writing to register location 5: 
+# FROM DUT:
+# operand_a  = 0
+# operand_b  = 14
+# opcode  = 6 (DIV)
+# WRITE_POINTER=16
+# rezultat  = 0
+# Writing to register location 18: 
 #   opcode = 3 (ADD)
 #   operand_a = -11
 #   operand_b = 2
 # 
-# Writing to register location 6: 
-#   opcode = 7 (MOD)
-#   operand_a = -14
-#   operand_b = 3
-# 
-# Writing to register location 7: 
-#   opcode = 4 (SUB)
-#   operand_a = 3
-#   operand_b = 15
-# 
-# Writing to register location 8: 
-#   opcode = 2 (PASSB)
-#   operand_a = -1
-#   operand_b = 4
-# 
-# Writing to register location 9: 
+# FROM DUT:
+# operand_a  = -11
+# operand_b  = 2
+# opcode  = 3 (ADD)
+# WRITE_POINTER=18
+# rezultat  = -9
+# Writing to register location 31: 
 #   opcode = 3 (ADD)
 #   operand_a = -12
 #   operand_b = 2
 # 
-# Writing to register location 10: 
-#   opcode = 3 (ADD)
-#   operand_a = 2
-#   operand_b = 11
-# 
+# FROM DUT:
+# operand_a  = -12
+# operand_b  = 2
+# opcode  = 3 (ADD)
+# WRITE_POINTER=31
+# rezultat  = -10
 # Writing to register location 11: 
-#   opcode = 2 (PASSB)
-#   operand_a = 11
-#   operand_b = 11
-# 
-# Writing to register location 12: 
-#   opcode = 3 (ADD)
-#   operand_a = -5
-#   operand_b = 2
-# 
-# Writing to register location 13: 
 #   opcode = 1 (PASSA)
 #   operand_a = -14
 #   operand_b = 3
 # 
-# Writing to register location 14: 
-#   opcode = 2 (PASSB)
-#   operand_a = 3
-#   operand_b = 1
-# 
-# Writing to register location 15: 
-#   opcode = 7 (MOD)
-#   operand_a = -15
-#   operand_b = 2
-# 
-# Writing to register location 16: 
-#   opcode = 7 (MOD)
-#   operand_a = -14
-#   operand_b = 7
-# 
-# Writing to register location 17: 
-#   opcode = 0 (ZERO)
-#   operand_a = -9
-#   operand_b = 7
-# 
+# FROM DUT:
+# operand_a  = -14
+# operand_b  = 3
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=11
+# rezultat  = -14
 # Writing to register location 18: 
-#   opcode = 6 (DIV)
-#   operand_a = -9
-#   operand_b = 8
-# 
-# Writing to register location 19: 
-#   opcode = 1 (PASSA)
-#   operand_a = 8
-#   operand_b = 6
-# 
-# Writing to register location 20: 
 #   opcode = 0 (ZERO)
-#   operand_a = -10
-#   operand_b = 9
+#   operand_a = -9
+#   operand_b = 7
 # 
-# Writing to register location 21: 
+# FROM DUT:
+# operand_a  = -9
+# operand_b  = 7
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=18
+# rezultat  = 0
+# Writing to register location 22: 
 #   opcode = 4 (SUB)
 #   operand_a = -7
 #   operand_b = 0
 # 
-# Writing to register location 22: 
-#   opcode = 7 (MOD)
-#   operand_a = 0
-#   operand_b = 4
-# 
-# Writing to register location 23: 
-#   opcode = 0 (ZERO)
-#   operand_a = 4
-#   operand_b = 15
-# 
-# Writing to register location 24: 
-#   opcode = 5 (MULT)
-#   operand_a = 15
-#   operand_b = 0
-# 
-# Writing to register location 25: 
+# FROM DUT:
+# operand_a  = -7
+# operand_b  = 0
+# opcode  = 4 (SUB)
+# WRITE_POINTER=22
+# rezultat  = -7
+# Writing to register location 31: 
 #   opcode = 7 (MOD)
 #   operand_a = 0
 #   operand_b = 13
 # 
-# Writing to register location 26: 
-#   opcode = 0 (ZERO)
-#   operand_a = -3
-#   operand_b = 15
-# 
-# Writing to register location 27: 
-#   opcode = 1 (PASSA)
-#   operand_a = -1
-#   operand_b = 0
-# 
-# Writing to register location 28: 
-#   opcode = 3 (ADD)
-#   operand_a = 0
-#   operand_b = 1
-# 
-# Writing to register location 29: 
+# FROM DUT:
+# operand_a  = 0
+# operand_b  = 13
+# opcode  = 7 (MOD)
+# WRITE_POINTER=31
+# rezultat  = 0
+# Writing to register location 16: 
 #   opcode = 3 (ADD)
 #   operand_a = 1
 #   operand_b = 3
 # 
-# Writing to register location 30: 
-#   opcode = 4 (SUB)
-#   operand_a = -13
-#   operand_b = 11
-# 
-# Writing to register location 31: 
-#   opcode = 3 (ADD)
-#   operand_a = -5
-#   operand_b = 12
-# 
-# Writing to register location 0: 
-#   opcode = 6 (DIV)
-#   operand_a = 12
-#   operand_b = 3
-# 
-# Writing to register location 1: 
+# FROM DUT:
+# operand_a  = 1
+# operand_b  = 3
+# opcode  = 3 (ADD)
+# WRITE_POINTER=16
+# rezultat  = 4
+# Writing to register location 12: 
 #   opcode = 1 (PASSA)
 #   operand_a = -13
 #   operand_b = 14
 # 
-# Writing to register location 2: 
-#   opcode = 6 (DIV)
-#   operand_a = -2
-#   operand_b = 1
-# 
-# Writing to register location 3: 
-#   opcode = 0 (ZERO)
-#   operand_a = -15
-#   operand_b = 6
-# 
-# Writing to register location 4: 
-#   opcode = 3 (ADD)
-#   operand_a = 6
-#   operand_b = 8
-# 
-# Writing to register location 5: 
+# FROM DUT:
+# operand_a  = -13
+# operand_b  = 14
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=12
+# rezultat  = -13
+# Writing to register location 6: 
 #   opcode = 4 (SUB)
 #   operand_a = -8
 #   operand_b = 11
 # 
-# Writing to register location 6: 
-#   opcode = 3 (ADD)
-#   operand_a = 11
-#   operand_b = 4
-# 
-# Writing to register location 7: 
-#   opcode = 3 (ADD)
-#   operand_a = -12
-#   operand_b = 11
-# 
-# Writing to register location 8: 
-#   opcode = 5 (MULT)
-#   operand_a = 11
-#   operand_b = 3
-# 
-# Writing to register location 9: 
+# FROM DUT:
+# operand_a  = -8
+# operand_b  = 11
+# opcode  = 4 (SUB)
+# WRITE_POINTER=6
+# rezultat  = -19
+# Writing to register location 11: 
 #   opcode = 1 (PASSA)
 #   operand_a = -13
 #   operand_b = 5
 # 
-# Writing to register location 10: 
-#   opcode = 0 (ZERO)
-#   operand_a = 5
-#   operand_b = 1
-# 
-# Writing to register location 11: 
-#   opcode = 7 (MOD)
-#   operand_a = 1
-#   operand_b = 8
-# 
-# Writing to register location 12: 
-#   opcode = 6 (DIV)
-#   operand_a = 8
-#   operand_b = 7
-# 
-# Writing to register location 13: 
+# FROM DUT:
+# operand_a  = -13
+# operand_b  = 5
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=11
+# rezultat  = -13
+# Writing to register location 8: 
 #   opcode = 1 (PASSA)
 #   operand_a = 7
 #   operand_b = 14
 # 
-# Writing to register location 14: 
-#   opcode = 5 (MULT)
-#   operand_a = 14
-#   operand_b = 9
-# 
-# Writing to register location 15: 
-#   opcode = 3 (ADD)
-#   operand_a = -7
-#   operand_b = 13
-# 
-# Writing to register location 16: 
-#   opcode = 0 (ZERO)
-#   operand_a = -3
-#   operand_b = 3
-# 
-# Writing to register location 17: 
+# FROM DUT:
+# operand_a  = 7
+# operand_b  = 14
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=8
+# rezultat  = 7
+# Writing to register location 29: 
 #   opcode = 0 (ZERO)
 #   operand_a = 3
 #   operand_b = 8
 # 
+# FROM DUT:
+# operand_a  = 3
+# operand_b  = 8
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=29
+# rezultat  = 0
+# Writing to register location 24: 
+#   opcode = 4 (SUB)
+#   operand_a = 9
+#   operand_b = 4
+# 
+# FROM DUT:
+# operand_a  = 9
+# operand_b  = 4
+# opcode  = 4 (SUB)
+# WRITE_POINTER=24
+# rezultat  = 5
+# Writing to register location 16: 
+#   opcode = 6 (DIV)
+#   operand_a = -6
+#   operand_b = 8
+# 
+# FROM DUT:
+# operand_a  = -6
+# operand_b  = 8
+# opcode  = 6 (DIV)
+# WRITE_POINTER=16
+# rezultat  = 0
+# Writing to register location 23: 
+#   opcode = 6 (DIV)
+#   operand_a = 7
+#   operand_b = 7
+# 
+# FROM DUT:
+# operand_a  = 7
+# operand_b  = 7
+# opcode  = 6 (DIV)
+# WRITE_POINTER=23
+# rezultat  = 1
+# Writing to register location 29: 
+#   opcode = 6 (DIV)
+#   operand_a = 7
+#   operand_b = 14
+# 
+# FROM DUT:
+# operand_a  = 7
+# operand_b  = 14
+# opcode  = 6 (DIV)
+# WRITE_POINTER=29
+# rezultat  = 0
+# Writing to register location 21: 
+#   opcode = 6 (DIV)
+#   operand_a = 1
+#   operand_b = 7
+# 
+# FROM DUT:
+# operand_a  = 1
+# operand_b  = 7
+# opcode  = 6 (DIV)
+# WRITE_POINTER=21
+# rezultat  = 0
+# Writing to register location 5: 
+#   opcode = 7 (MOD)
+#   operand_a = 1
+#   operand_b = 2
+# 
+# FROM DUT:
+# operand_a  = 1
+# operand_b  = 2
+# opcode  = 7 (MOD)
+# WRITE_POINTER=5
+# rezultat  = 1
+# Writing to register location 0: 
+#   opcode = 1 (PASSA)
+#   operand_a = -4
+#   operand_b = 14
+# 
+# FROM DUT:
+# operand_a  = -4
+# operand_b  = 14
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=0
+# rezultat  = -4
+# Writing to register location 24: 
+#   opcode = 4 (SUB)
+#   operand_a = -2
+#   operand_b = 14
+# 
+# FROM DUT:
+# operand_a  = -2
+# operand_b  = 14
+# opcode  = 4 (SUB)
+# WRITE_POINTER=24
+# rezultat  = -16
+# Writing to register location 19: 
+#   opcode = 7 (MOD)
+#   operand_a = -6
+#   operand_b = 13
+# 
+# FROM DUT:
+# operand_a  = -6
+# operand_b  = 13
+# opcode  = 7 (MOD)
+# WRITE_POINTER=19
+# rezultat  = -6
+# Writing to register location 8: 
+#   opcode = 2 (PASSB)
+#   operand_a = 4
+#   operand_b = 7
+# 
+# FROM DUT:
+# operand_a  = 4
+# operand_b  = 7
+# opcode  = 2 (PASSB)
+# WRITE_POINTER=8
+# rezultat  = 7
+# Writing to register location 5: 
+#   opcode = 6 (DIV)
+#   operand_a = 10
+#   operand_b = 13
+# 
+# FROM DUT:
+# operand_a  = 10
+# operand_b  = 13
+# opcode  = 6 (DIV)
+# WRITE_POINTER=5
+# rezultat  = 0
+# Writing to register location 20: 
+#   opcode = 5 (MULT)
+#   operand_a = -5
+#   operand_b = 7
+# 
+# FROM DUT:
+# operand_a  = -5
+# operand_b  = 7
+# opcode  = 5 (MULT)
+# WRITE_POINTER=20
+# rezultat  = -35
+# Writing to register location 25: 
+#   opcode = 3 (ADD)
+#   operand_a = -5
+#   operand_b = 10
+# 
+# FROM DUT:
+# operand_a  = -5
+# operand_b  = 10
+# opcode  = 3 (ADD)
+# WRITE_POINTER=25
+# rezultat  = 5
+# Writing to register location 29: 
+#   opcode = 3 (ADD)
+#   operand_a = 3
+#   operand_b = 13
+# 
+# FROM DUT:
+# operand_a  = 3
+# operand_b  = 13
+# opcode  = 3 (ADD)
+# WRITE_POINTER=29
+# rezultat  = 16
+# Writing to register location 9: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 9
+# 
+# FROM DUT:
+# operand_a  = 0
+# operand_b  = 9
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=9
+# rezultat  = 0
+# Writing to register location 14: 
+#   opcode = 7 (MOD)
+#   operand_a = -14
+#   operand_b = 12
+# 
+# FROM DUT:
+# operand_a  = -14
+# operand_b  = 12
+# opcode  = 7 (MOD)
+# WRITE_POINTER=14
+# rezultat  = -2
+# Writing to register location 27: 
+#   opcode = 4 (SUB)
+#   operand_a = 3
+#   operand_b = 13
+# 
+# FROM DUT:
+# operand_a  = 3
+# operand_b  = 13
+# opcode  = 4 (SUB)
+# WRITE_POINTER=27
+# rezultat  = -10
+# Writing to register location 18: 
+#   opcode = 4 (SUB)
+#   operand_a = -2
+#   operand_b = 12
+# 
+# FROM DUT:
+# operand_a  = -2
+# operand_b  = 12
+# opcode  = 4 (SUB)
+# WRITE_POINTER=18
+# rezultat  = -14
+# Writing to register location 12: 
+#   opcode = 7 (MOD)
+#   operand_a = 6
+#   operand_b = 3
+# 
+# FROM DUT:
+# operand_a  = 6
+# operand_b  = 3
+# opcode  = 7 (MOD)
+# WRITE_POINTER=12
+# rezultat  = 0
+# Writing to register location 26: 
+#   opcode = 7 (MOD)
+#   operand_a = -8
+#   operand_b = 5
+# 
+# FROM DUT:
+# operand_a  = -8
+# operand_b  = 5
+# opcode  = 7 (MOD)
+# WRITE_POINTER=26
+# rezultat  = -3
+# Writing to register location 0: 
+#   opcode = 7 (MOD)
+#   operand_a = -6
+#   operand_b = 2
+# 
+# FROM DUT:
+# operand_a  = -6
+# operand_b  = 2
+# opcode  = 7 (MOD)
+# WRITE_POINTER=0
+# rezultat  = 0
+# Writing to register location 25: 
+#   opcode = 3 (ADD)
+#   operand_a = 7
+#   operand_b = 2
+# 
+# FROM DUT:
+# operand_a  = 7
+# operand_b  = 2
+# opcode  = 3 (ADD)
+# WRITE_POINTER=25
+# rezultat  = 9
+# Writing to register location 16: 
+#   opcode = 0 (ZERO)
+#   operand_a = -2
+#   operand_b = 8
+# 
+# FROM DUT:
+# operand_a  = -2
+# operand_b  = 8
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=16
+# rezultat  = 0
+# Writing to register location 4: 
+#   opcode = 5 (MULT)
+#   operand_a = 4
+#   operand_b = 13
+# 
+# FROM DUT:
+# operand_a  = 4
+# operand_b  = 13
+# opcode  = 5 (MULT)
+# WRITE_POINTER=4
+# rezultat  = 52
+# Writing to register location 28: 
+#   opcode = 1 (PASSA)
+#   operand_a = -13
+#   operand_b = 15
+# 
+# FROM DUT:
+# operand_a  = -13
+# operand_b  = 15
+# opcode  = 1 (PASSA)
+# WRITE_POINTER=28
+# rezultat  = -13
+# Writing to register location 16: 
+#   opcode = 5 (MULT)
+#   operand_a = -14
+#   operand_b = 15
+# 
+# FROM DUT:
+# operand_a  = -14
+# operand_b  = 15
+# opcode  = 5 (MULT)
+# WRITE_POINTER=16
+# rezultat  = -210
+# Writing to register location 21: 
+#   opcode = 6 (DIV)
+#   operand_a = -15
+#   operand_b = 1
+# 
+# FROM DUT:
+# operand_a  = -15
+# operand_b  = 1
+# opcode  = 6 (DIV)
+# WRITE_POINTER=21
+# rezultat  = -15
+# Writing to register location 16: 
+#   opcode = 2 (PASSB)
+#   operand_a = -1
+#   operand_b = 0
+# 
+# FROM DUT:
+# operand_a  = -1
+# operand_b  = 0
+# opcode  = 2 (PASSB)
+# WRITE_POINTER=16
+# rezultat  = 0
+# Writing to register location 19: 
+#   opcode = 4 (SUB)
+#   operand_a = 9
+#   operand_b = 5
+# 
+# FROM DUT:
+# operand_a  = 9
+# operand_b  = 5
+# opcode  = 4 (SUB)
+# WRITE_POINTER=19
+# rezultat  = 4
+# Writing to register location 25: 
+#   opcode = 4 (SUB)
+#   operand_a = -11
+#   operand_b = 7
+# 
+# FROM DUT:
+# operand_a  = -11
+# operand_b  = 7
+# opcode  = 4 (SUB)
+# WRITE_POINTER=25
+# rezultat  = -18
+# Writing to register location 28: 
+#   opcode = 2 (PASSB)
+#   operand_a = -11
+#   operand_b = 0
+# 
+# FROM DUT:
+# operand_a  = -11
+# operand_b  = 0
+# opcode  = 2 (PASSB)
+# WRITE_POINTER=28
+# rezultat  = 0
+# Writing to register location 25: 
+#   opcode = 2 (PASSB)
+#   operand_a = -15
+#   operand_b = 2
+# 
+# FROM DUT:
+# operand_a  = -15
+# operand_b  = 2
+# opcode  = 2 (PASSB)
+# WRITE_POINTER=25
+# rezultat  = 2
+# Writing to register location 25: 
+#   opcode = 6 (DIV)
+#   operand_a = -15
+#   operand_b = 2
+# 
+# FROM DUT:
+# operand_a  = -15
+# operand_b  = 2
+# opcode  = 6 (DIV)
+# WRITE_POINTER=25
+# rezultat  = -7
+# Writing to register location 30: 
+#   opcode = 0 (ZERO)
+#   operand_a = 4
+#   operand_b = 0
+# 
+# FROM DUT:
+# operand_a  = 4
+# operand_b  = 0
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=30
+# rezultat  = 0
+# Writing to register location 3: 
+#   opcode = 0 (ZERO)
+#   operand_a = 8
+#   operand_b = 6
+# 
+# FROM DUT:
+# operand_a  = 8
+# operand_b  = 6
+# opcode  = 0 (ZERO)
+# WRITE_POINTER=3
+# rezultat  = 0
+# Writing to register location 16: 
+#   opcode = 7 (MOD)
+#   operand_a = 6
+#   operand_b = 6
+# 
+# FROM DUT:
+# operand_a  = 6
+# operand_b  = 6
+# opcode  = 7 (MOD)
+# WRITE_POINTER=16
+# rezultat  = 0
+# Writing to register location 18: 
+#   opcode = 4 (SUB)
+#   operand_a = -5
+#   operand_b = 15
+# 
+# FROM DUT:
+# operand_a  = -5
+# operand_b  = 15
+# opcode  = 4 (SUB)
+# WRITE_POINTER=18
+# rezultat  = -20
 # 
 # Reading back the same register locations written...
 # Read from register location 0: 
-#   opcode = 6 (DIV)
-#   operand_a = 12
-#   operand_b = 3
-# 
-#   rezultat = 7
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -3, operand_a = 12
-# operand b diferit cu ce s-a generat
-# operand_b = 3, operand_b = 3
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 1: 
-#   opcode = 1 (PASSA)
-#   operand_a = -13
-#   operand_b = 14
-# 
-#   rezultat = 4
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 11, operand_a = -13
-# operand b diferit cu ce s-a generat
-# operand_b = 3, operand_b = 14
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 2: 
-#   opcode = 6 (DIV)
-#   operand_a = -2
-#   operand_b = 1
-# 
-#   rezultat = -13
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -2, operand_a = -2
-# operand b diferit cu ce s-a generat
-# operand_b = 2, operand_b = 1
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 3: 
-#   opcode = 0 (ZERO)
-#   operand_a = -15
-#   operand_b = 6
-# 
-#   rezultat = -2
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 14, operand_a = -15
-# operand b diferit cu ce s-a generat
-# operand_b = 9, operand_b = 6
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 4: 
-#   opcode = 3 (ADD)
-#   operand_a = 6
-#   operand_b = 8
+#   opcode = 7 (MOD)
+#   operand_a = -6
+#   operand_b = 2
 # 
 #   rezultat = 0
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -10, operand_a = 6
-# operand b diferit cu ce s-a generat
-# operand_b = 9, operand_b = 8
+# operand_a = -6
+# operand_b = 2
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
+# Read from register location 1: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = 0
 # 
+# Read from register location 2: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
+# 
+#   rezultat = 0
+# 
+# Read from register location 3: 
+#   opcode = 0 (ZERO)
+#   operand_a = 8
+#   operand_b = 6
+# 
+#   rezultat = 0
+# 
+# operand_a = 8
+# operand_b = 6
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 0
+# Rezultatul stocat: 0
+# Read from register location 4: 
+#   opcode = 5 (MULT)
+#   operand_a = 4
+#   operand_b = 13
+# 
+#   rezultat = 52
+# 
+# operand_a = 4
+# operand_b = 13
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 52
+# Rezultatul stocat: 52
 # Read from register location 5: 
+#   opcode = 6 (DIV)
+#   operand_a = 10
+#   operand_b = 13
+# 
+#   rezultat = 0
+# 
+# operand_a = 10
+# operand_b = 13
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 0
+# Rezultatul stocat: 0
+# Read from register location 6: 
 #   opcode = 4 (SUB)
 #   operand_a = -8
 #   operand_b = 11
 # 
-#   rezultat = 14
-# 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 6: 
-#   opcode = 3 (ADD)
-#   operand_a = 11
-#   operand_b = 4
-# 
 #   rezultat = -19
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -13, operand_a = 11
-# operand b diferit cu ce s-a generat
-# operand_b = 14, operand_b = 4
+# operand_a = -8
+# operand_b = 11
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
+# Rezultatul calculat: -19
+# Rezultatul stocat: -19
 # Read from register location 7: 
-#   opcode = 3 (ADD)
-#   operand_a = -12
-#   operand_b = 11
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
 # 
-#   rezultat = 15
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -15, operand_a = -12
-# operand b diferit cu ce s-a generat
-# operand_b = 2, operand_b = 11
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = 0
 # 
 # Read from register location 8: 
-#   opcode = 5 (MULT)
-#   operand_a = 11
-#   operand_b = 3
+#   opcode = 2 (PASSB)
+#   operand_a = 4
+#   operand_b = 7
 # 
-#   rezultat = -1
+#   rezultat = 7
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -7, operand_a = 11
-# operand b diferit cu ce s-a generat
-# operand_b = 13, operand_b = 3
+# operand_a = 4
+# operand_b = 7
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 7
+# Rezultatul stocat: 7
+# Read from register location 9: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 9
+# 
+#   rezultat = 0
+# 
+# operand_a = 0
+# operand_b = 9
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
+# Read from register location 10: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = 0
 # 
-# Read from register location 9: 
+# Read from register location 11: 
 #   opcode = 1 (PASSA)
 #   operand_a = -13
 #   operand_b = 5
 # 
-#   rezultat = 33
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 8, operand_a = -13
-# operand b diferit cu ce s-a generat
-# operand_b = 7, operand_b = 5
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 10: 
-#   opcode = 0 (ZERO)
-#   operand_a = 5
-#   operand_b = 1
-# 
 #   rezultat = -13
 # 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 11: 
+# operand_a = -13
+# operand_b = 5
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -13
+# Rezultatul stocat: -13
+# Read from register location 12: 
 #   opcode = 7 (MOD)
-#   operand_a = 1
-#   operand_b = 8
+#   operand_a = 6
+#   operand_b = 3
 # 
 #   rezultat = 0
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -8, operand_a = 1
-# operand b diferit cu ce s-a generat
-# operand_b = 11, operand_b = 8
+# operand_a = 6
+# operand_b = 3
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
+# Read from register location 13: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = 0
 # 
-# Read from register location 12: 
+# Read from register location 14: 
+#   opcode = 7 (MOD)
+#   operand_a = -14
+#   operand_b = 12
+# 
+#   rezultat = -2
+# 
+# operand_a = -14
+# operand_b = 12
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -2
+# Rezultatul stocat: -2
+# Read from register location 15: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
+# 
+#   rezultat = 0
+# 
+# Read from register location 16: 
+#   opcode = 7 (MOD)
+#   operand_a = 6
+#   operand_b = 6
+# 
+#   rezultat = 0
+# 
+# operand_a = 6
+# operand_b = 6
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 0
+# Rezultatul stocat: 0
+# Read from register location 17: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
+# 
+#   rezultat = 0
+# 
+# Read from register location 18: 
+#   opcode = 4 (SUB)
+#   operand_a = -5
+#   operand_b = 15
+# 
+#   rezultat = -20
+# 
+# operand_a = -5
+# operand_b = 15
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -20
+# Rezultatul stocat: -20
+# Read from register location 19: 
+#   opcode = 4 (SUB)
+#   operand_a = 9
+#   operand_b = 5
+# 
+#   rezultat = 4
+# 
+# operand_a = 9
+# operand_b = 5
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 4
+# Rezultatul stocat: 4
+# Read from register location 20: 
+#   opcode = 5 (MULT)
+#   operand_a = -5
+#   operand_b = 7
+# 
+#   rezultat = -35
+# 
+# operand_a = -5
+# operand_b = 7
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -35
+# Rezultatul stocat: -35
+# Read from register location 21: 
 #   opcode = 6 (DIV)
-#   operand_a = 8
+#   operand_a = -15
+#   operand_b = 1
+# 
+#   rezultat = -15
+# 
+# operand_a = -15
+# operand_b = 1
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -15
+# Rezultatul stocat: -15
+# Read from register location 22: 
+#   opcode = 4 (SUB)
+#   operand_a = -7
+#   operand_b = 0
+# 
+#   rezultat = -7
+# 
+# operand_a = -7
+# operand_b = 0
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -7
+# Rezultatul stocat: -7
+# Read from register location 23: 
+#   opcode = 6 (DIV)
+#   operand_a = 7
 #   operand_b = 7
 # 
 #   rezultat = 1
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = 1, operand_a = 8
-# operand b diferit cu ce s-a generat
-# operand_b = 3, operand_b = 7
+# operand_a = 7
+# operand_b = 7
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 13: 
-#   opcode = 1 (PASSA)
-#   operand_a = 7
+# Rezultatul calculat: 1
+# Rezultatul stocat: 1
+# Read from register location 24: 
+#   opcode = 4 (SUB)
+#   operand_a = -2
 #   operand_b = 14
 # 
-#   rezultat = 1
+#   rezultat = -16
 # 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 14: 
-#   opcode = 5 (MULT)
-#   operand_a = 14
-#   operand_b = 9
-# 
-#   rezultat = 7
-# 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 15: 
-#   opcode = 3 (ADD)
-#   operand_a = -7
-#   operand_b = 13
-# 
-#   rezultat = 126
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 15, operand_a = -7
-# operand b diferit cu ce s-a generat
-# operand_b = 0, operand_b = 13
+# operand_a = -2
+# operand_b = 14
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 16: 
-#   opcode = 0 (ZERO)
-#   operand_a = -3
-#   operand_b = 3
-# 
-#   rezultat = 6
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 0, operand_a = -3
-# operand b diferit cu ce s-a generat
-# operand_b = 13, operand_b = 3
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 17: 
-#   opcode = 0 (ZERO)
-#   operand_a = 3
-#   operand_b = 8
-# 
-#   rezultat = 0
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -3, operand_a = 3
-# operand b diferit cu ce s-a generat
-# operand_b = 15, operand_b = 8
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 18: 
+# Rezultatul calculat: -16
+# Rezultatul stocat: -16
+# Read from register location 25: 
 #   opcode = 6 (DIV)
-#   operand_a = -9
-#   operand_b = 8
-# 
-#   rezultat = 0
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -14, operand_a = -9
-# operand b diferit cu ce s-a generat
-# operand_b = 3, operand_b = 8
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 19: 
-#   opcode = 1 (PASSA)
-#   operand_a = 8
-#   operand_b = 6
-# 
-#   rezultat = -1
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -1, operand_a = 8
-# operand b diferit cu ce s-a generat
-# operand_b = 0, operand_b = 6
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 20: 
-#   opcode = 0 (ZERO)
-#   operand_a = -10
-#   operand_b = 9
-# 
-#   rezultat = 8
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 6, operand_a = -10
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 21: 
-#   opcode = 4 (SUB)
-#   operand_a = -7
-#   operand_b = 0
-# 
-#   rezultat = 0
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -12, operand_a = -7
-# operand b diferit cu ce s-a generat
-# operand_b = 11, operand_b = 0
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 22: 
-#   opcode = 7 (MOD)
-#   operand_a = 0
-#   operand_b = 4
+#   operand_a = -15
+#   operand_b = 2
 # 
 #   rezultat = -7
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -9, operand_a = 0
-# operand b diferit cu ce s-a generat
-# operand_b = 7, operand_b = 4
+# operand_a = -15
+# operand_b = 2
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
+# Rezultatul calculat: -7
+# Rezultatul stocat: -7
+# Read from register location 26: 
+#   opcode = 7 (MOD)
+#   operand_a = -8
+#   operand_b = 5
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = -3
 # 
-# Read from register location 23: 
-#   opcode = 0 (ZERO)
-#   operand_a = 4
-#   operand_b = 15
-# 
-#   rezultat = 0
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 5, operand_a = 4
-# operand b diferit cu ce s-a generat
-# operand_b = 1, operand_b = 15
+# operand_a = -8
+# operand_b = 5
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
+# Rezultatul calculat: -3
+# Rezultatul stocat: -3
+# Read from register location 27: 
+#   opcode = 4 (SUB)
+#   operand_a = 3
+#   operand_b = 13
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = -10
 # 
-# Read from register location 24: 
-#   opcode = 5 (MULT)
-#   operand_a = 15
+# operand_a = 3
+# operand_b = 13
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: -10
+# Rezultatul stocat: -10
+# Read from register location 28: 
+#   opcode = 2 (PASSB)
+#   operand_a = -11
 #   operand_b = 0
 # 
 #   rezultat = 0
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -14, operand_a = 15
-# operand b diferit cu ce s-a generat
-# operand_b = 7, operand_b = 0
+# operand_a = -11
+# operand_b = 0
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
+# Read from register location 29: 
+#   opcode = 3 (ADD)
+#   operand_a = 3
+#   operand_b = 13
 # 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
+#   rezultat = 16
 # 
-# Read from register location 25: 
+# operand_a = 3
+# operand_b = 13
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 16
+# Rezultatul stocat: 16
+# Read from register location 30: 
+#   opcode = 0 (ZERO)
+#   operand_a = 4
+#   operand_b = 0
+# 
+#   rezultat = 0
+# 
+# operand_a = 4
+# operand_b = 0
+# opcode = 4 (SUB)
+# Rezultate asemanatoare
+# Rezultatul calculat: 0
+# Rezultatul stocat: 0
+# Read from register location 31: 
 #   opcode = 7 (MOD)
 #   operand_a = 0
 #   operand_b = 13
 # 
 #   rezultat = 0
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -9, operand_a = 0
+# operand_a = 0
+# operand_b = 13
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 26: 
-#   opcode = 0 (ZERO)
-#   operand_a = -3
-#   operand_b = 15
-# 
-#   rezultat = 0
-# 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 27: 
-#   opcode = 1 (PASSA)
-#   operand_a = -1
-#   operand_b = 0
-# 
-#   rezultat = 0
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -1, operand_a = -1
-# operand b diferit cu ce s-a generat
-# operand_b = 4, operand_b = 0
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 28: 
-#   opcode = 3 (ADD)
-#   operand_a = 0
-#   operand_b = 1
-# 
-#   rezultat = -1
-# 
-# Rezultatul calculat: x
-# rezultatul stocat : 0 
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 29: 
-#   opcode = 3 (ADD)
-#   operand_a = 1
-#   operand_b = 3
-# 
-#   rezultat = 1
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 7, operand_a = 1
-# operand b diferit cu ce s-a generat
-# operand_b = 14, operand_b = 3
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 30: 
-#   opcode = 4 (SUB)
-#   operand_a = -13
-#   operand_b = 11
-# 
-#   rezultat = 4
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = 1, operand_a = -13
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
-# Read from register location 31: 
-#   opcode = 3 (ADD)
-#   operand_a = -5
-#   operand_b = 12
-# 
-#   rezultat = -24
-# 
-# operand a diferit cu ce s-a generat
-# operand_a = -7, operand_a = -5
-# operand b diferit cu ce s-a generat
-# operand_b = 0, operand_b = 12
-# Rezultate asemanatoare
-# Rezultatul calculat: 0
-# Rezultatul stocat: 0
-# 
-# ***********************************************************
-# ***  THIS IS A SELF-CHECKING TESTBENCH (YET).  YOU  *******
-# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
-# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
-# ***********************************************************
-# 
 # Read from register location 0: 
-#   opcode = 6 (DIV)
-#   operand_a = 12
-#   operand_b = 3
+#   opcode = 7 (MOD)
+#   operand_a = -6
+#   operand_b = 2
 # 
-#   rezultat = 7
+#   rezultat = 0
 # 
-# operand a diferit cu ce s-a generat
-# operand_a = -3, operand_a = 12
-# operand b diferit cu ce s-a generat
-# operand_b = 3, operand_b = 3
+# operand_a = -6
+# operand_b = 2
+# opcode = 4 (SUB)
 # Rezultate asemanatoare
 # Rezultatul calculat: 0
 # Rezultatul stocat: 0
@@ -937,6 +980,6 @@
 # ***********************************************************
 # 
 # ** Note: $finish    : ../lab01_testbench-interface/instr_register_test.sv(105)
-#    Time: 1526 ns  Iteration: 1  Instance: /top/test
-# End time: 08:55:18 on Apr 10,2024, Elapsed time: 0:00:01
+#    Time: 1206 ns  Iteration: 1  Instance: /top/test
+# End time: 17:07:31 on Apr 16,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0

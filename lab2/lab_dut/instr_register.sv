@@ -1,3 +1,4 @@
+
 /***********************************************************************
  * A SystemVerilog RTL model of an instruction regisgter
  *
@@ -5,8 +6,6 @@
  * the option:  +define+FORCE_LOAD_ERROR
  *
  **********************************************************************/
-
-//dut-ul calculeaza si trimite rezultatul inapo
 
 module instr_register
 import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
@@ -16,28 +15,47 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  input  operand_t      operand_a,
  input  operand_t      operand_b,
  input  opcode_t       opcode,
- input  address_t      write_pointer,     // se declara semnalele
+ input  address_t      write_pointer,
  input  address_t      read_pointer,
  output instruction_t  instruction_word
 );
   timeunit 1ns/1ns;
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
-  result_t op_result;
-  // iw_reg e array -> de 32 de locatii
- // write to the register
+  operand_t operand_rezultat;
+
+  // write to the register
   always@(posedge clk, negedge reset_n)   // write into register
     if (!reset_n) begin
-      foreach (iw_reg[i])  //foreach-> pentru fiecare elem din arrray
-        iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
+      foreach (iw_reg[i])
+        iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros -  asa se initializeaza o structura si pune in zero
     end
-    else if (load_en) begin //putem incarca date in registru
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, op_result}; // write pointer poate lua val intre 0 si 31
+    else if (load_en) begin
+      
+      $display("FROM DUT:");
+      $display("operand_a  = %0d", operand_a);
+      $display("operand_b  = %0d", operand_b);
+      $display("opcode  = %0d (%s)", opcode, opcode.name);
+
+      case (opcode)
+        ZERO: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,0};
+        PASSA: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_a};
+        PASSB: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_b};
+        ADD: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_a + operand_b};
+        SUB: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_a - operand_b};
+        MULT: iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_a * operand_b};  
+        DIV:  if(operand_b == 0) iw_reg[write_pointer] = '{opcode,operand_a,operand_b, 0}; else  iw_reg[write_pointer] = '{opcode,operand_a,operand_b, operand_a / operand_b};
+        MOD:  if(operand_b == 0) iw_reg[write_pointer] = '{opcode,operand_a,operand_b, 0}; else  iw_reg[write_pointer] = '{opcode,operand_a,operand_b, operand_a % operand_b};
+        POW: iw_reg[write_pointer] = '{opcode, operand_a, operand_b, operand_a ** operand_b};
+        default:iw_reg[write_pointer] = '{opcode,operand_a,operand_b,'bx};
+      endcase
+      // iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_rezultat};
+      $display("WRITE_POINTER=%0d",write_pointer);
+      $display("rezultat  = %0d", iw_reg[write_pointer].rezultat);
     end
 
   // read from the register
   assign instruction_word = iw_reg[read_pointer];  // continuously read from register
-  // la un semnal de output ii asignam o valoare in functie de read pointer si punem pe output
 
 // compile with +define+FORCE_LOAD_ERROR to inject a functional bug for verification to catch
 `ifdef FORCE_LOAD_ERROR
@@ -46,18 +64,7 @@ initial begin
 end
 `endif
 
-  always @(posedge clk , negedge reset_n)
-    case (opcode)
-    ZERO: op_result = 32'sd0;
-    PASSA: op_result = operand_a;
-    PASSB: op_result = operand_b;
-    ADD: op_result = operand_a + operand_b;
-    SUB: op_result = operand_a - operand_b;
-    MULT: op_result = operand_a * operand_b;
-    DIV: if(operand_b === 0) op_result = 0; 
-    else op_result = operand_a / operand_b;
-    MOD: op_result = operand_a % operand_b;
-    default: op_result = 'bx;
-  endcase
-
+  
+  
+  
 endmodule: instr_register
