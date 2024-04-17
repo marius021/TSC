@@ -208,3 +208,63 @@
 
 **
 
+
+**
+**                         STATISTICS                      
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 5  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 4  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                         STATISTICS                      
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 2  TOTAL TESTS =  32   
+               STATUS: FAILED                            
+
+**
+
+
+**
+**                          STATISTICS                       
+               TEST NAME: case1_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
+               STATUS :  PASSED                       
+
+**
+
+
+**
+**                          STATISTICS                       
+               TEST NAME: case2_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
+               STATUS :  PASSED                       
+
+**
+
+
+**
+**                          STATISTICS                       
+               TEST NAME: case3_c                      
+               READ_ORDER = 2 ,  WRITE_ORDER = 2    
+               TESTS FAILED = 0  TOTAL TESTS =  32   *
+               STATUS :  PASSED                       
+
+**
+
