@@ -19,19 +19,19 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  input  address_t      read_pointer,
  output instruction_t  instruction_word
 );
-  timeunit 1ns/1ns;
+  timeunit 1ns/1ns;  // set the time and precision
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
-  operand_t operand_rezultat;
+  operand_t operand_rezultat;   
 
   // write to the register
   always@(posedge clk, negedge reset_n)   // write into register
     if (!reset_n) begin
-      foreach (iw_reg[i])
-        iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros -  asa se initializeaza o structura si pune in zero
+      foreach (iw_reg[i])  // loop through each element in the reg array
+        iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros -  initialize all entries to zero
     end
-    else if (load_en) begin
-      
+    else if (load_en) begin  // if load_en is 1, allow writing to the register
+      // Debug statements displaying the current operation
       $display("FROM DUT:");
       $display("operand_a  = %0d", operand_a);
       $display("operand_b  = %0d", operand_b);
@@ -47,7 +47,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         DIV:  if(operand_b == 0) iw_reg[write_pointer] = '{opcode,operand_a,operand_b, 0}; else  iw_reg[write_pointer] = '{opcode,operand_a,operand_b, operand_a / operand_b};
         MOD:  if(operand_b == 0) iw_reg[write_pointer] = '{opcode,operand_a,operand_b, 0}; else  iw_reg[write_pointer] = '{opcode,operand_a,operand_b, operand_a % operand_b};
         POW: iw_reg[write_pointer] = '{opcode, operand_a, operand_b, operand_a ** operand_b};
-        default:iw_reg[write_pointer] = '{opcode,operand_a,operand_b,'bx};
+        default:iw_reg[write_pointer] = '{opcode,operand_a,operand_b,'bx};  // handles any undefined opcode -> setting the result to an unknown state
       endcase
       // iw_reg[write_pointer] = '{opcode,operand_a,operand_b,operand_rezultat};
       $display("WRITE_POINTER=%0d",write_pointer);

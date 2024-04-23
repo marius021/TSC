@@ -10,10 +10,10 @@ module top;
 
   // clock variables
   logic clk;          // logic - se determina automat daca e wire sau reg
-  logic test_clk;
+  logic test_clk;    // separate clk for testbench
 
   // interconnecting signals
-  logic          load_en;   // 
+  logic          load_en;   // load_en signal to control when data si written to dut
   logic          reset_n;  // reset activ in 0
   opcode_t       opcode;  // tip de date facut de user
   operand_t      operand_a, operand_b;
@@ -46,20 +46,21 @@ module top;
     .instruction_word(instruction_word)
    );
 
-  // clock oscillators
+  // clock oscillators / clock generation for DUT
   initial begin   // structura/cuvant cheie
     clk <= 0;
     forever #5  clk = ~clk; // asteapta 5 ns - neaga clock ul, sta in 1 5ns si asa mai departe
     // perioada 10, factor de ump 50%
   end
 
+  // clk generation for tb with a phase offset
   initial begin
     test_clk <=0;
     // offset test_clk edges from clk to prevent races between
     // the testbench and the design
     #4 forever begin   // astepta 4ns - se executa o singura data pt ca e inainte de forever
-      #2ns test_clk = 1'b1;
-      #8ns test_clk = 1'b0;     
+      #2ns test_clk = 1'b1;   // test_clk in high for 2 ns
+      #8ns test_clk = 1'b0;   // test_clk in low for 8ns  
       //80% factor de umplere, perioada 10 (8+2)
     end
   end

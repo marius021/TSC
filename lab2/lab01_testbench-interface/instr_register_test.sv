@@ -27,13 +27,13 @@ module instr_register_test
   int seed_val = SEED_VALUE; // 
   instruction_t  iw_reg_test [31:0];
   instruction_t instruction_word_test;
-  operand_t local_result = 0;
+  result_t local_result = 0;
   static int temp = 0;    // variabila de tip static -> la a 2-a chemare aloca doar a
   int not_passed_tests = 0;
   
 
-  parameter READ_ORDER = 0; // ordinea incremental decremental order
-  parameter WRITE_ORDER = 0;
+  parameter READ_ORDER = 0; // ordinea incremental decremental random
+  parameter WRITE_ORDER = 0; // incremental decremental random
   parameter TEST_NAME ="";
    //logic local_result[31:0]; // Moved declaration above the loop
 
@@ -62,30 +62,32 @@ module instr_register_test
     
 
       $display("\nWriting values to register stack...");
-    @(posedge clk) load_en = 1'b1;  // enable writing to register
+ 
     repeat (WR_NR) begin
-      @(posedge clk) randomize_transaction;
+      
+      @(posedge clk) randomize_transaction;             // aici a fost bug, mai intai se dadea load si dupa datele
+        load_en = 1'b1;  // enable writing to register
       @(negedge clk) print_transaction;     
     end
     @(posedge clk) load_en = 1'b0;  // turn-off writing to register | load enable in 0
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    for (int i=0; i<=RD_NR; i++) begin
+    for (int i=0; i<RD_NR; i++) begin
 
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
 
-      if (READ_ORDER == 0) begin
+      if (READ_ORDER == 0) begin         // read_order incremental
         read_pointer = i;
-      end else if (read_pointer == 1) begin
-        read_pointer = RD_NR - i;
+      end else if (READ_ORDER == 1) begin
+        read_pointer = RD_NR - i;     // read order decremental
       end else begin
-        read_pointer = $unsigned($random(seed_val))%32;
+        read_pointer = $unsigned($random(seed_val))%32;   // read order random
       end
 
-      @(posedge clk) read_pointer = i;
+   // @(posedge clk) read_pointer = i;  
       @(negedge clk) print_results;
       @(posedge clk) check_result;
     end
@@ -144,18 +146,18 @@ module instr_register_test
     // write_pointer values in a later lab
     //
 
-    if (WRITE_ORDER == 0) begin
-          write_pointer = temp++;
+    if (WRITE_ORDER == 0) begin           
+          write_pointer = temp++;         // cazul incremental
       end else if (WRITE_ORDER == 1) begin
-        write_pointer = temp--;
+        write_pointer = temp--;         // cazul decremental
       end else begin
-        write_pointer = $unsigned($random(seed_val))%32;
+        write_pointer = $unsigned($random(seed_val))%32; //cazul random
       end
   
 
     operand_a     = $random(seed_val)%16;                 // between -15 and 15
     operand_b    = $unsigned($random(seed_val))%16;            // between 0 and 15
-    opcode        = opcode_t'($unsigned($random(seed_val))%8);  // between 0 and 7, cast to opcode_t type | mai face un cast
+    opcode        = opcode_t'($unsigned($random(seed_val))%9);  // between 0 and 7, cast to opcode_t type | mai face un cast
     // write_pointer = $unsigned(random)
     iw_reg_test[write_pointer] = '{opcode, operand_a, operand_b, 4'b0};
     
@@ -177,12 +179,12 @@ module instr_register_test
     $display("  rezultat = %0d\n", instruction_word.rezultat);
   endfunction: print_results
 
-function void check_result; //
+function void check_result; 
 
-    instruction_word_test = iw_reg_test[read_pointer];
+    instruction_word_test = iw_reg_test[read_pointer]; // ia valoarea din iw_reg_test la read_pointer
 
-    if(instruction_word_test.operand_a === 'hxx) begin
-
+    if(instruction_word_test.operand_a === 'hxx) begin 
+                  // daca operand a are val nedeterminata se opreste check result
           return;
       end
 
@@ -213,7 +215,8 @@ function void check_result; //
         else local_result = instruction_word_test.operand_a / instruction_word_test.operand_b;
         MOD: if(instruction_word_test.operand_b === 0) local_result = 0; 
         else local_result = instruction_word_test.operand_a % instruction_word_test.operand_b;
-        POW: local_result = instruction_word_test.operand_a ** instruction_word_test.operand_b;
+        POW: if(instruction_word_test.operand_b === 0) local_result = 1; 
+        else local_result = instruction_word_test.operand_a ** instruction_word_test.operand_b;
 
       endcase 
 
@@ -235,11 +238,6 @@ function void check_result; //
   end // Close the loop
 
 endfunction
-
- 
-// iw_reg -> array
-// write_pointer 
-// de testat cele 9 cazuri | functia de final_report
 
 
 endmodule: instr_register_test

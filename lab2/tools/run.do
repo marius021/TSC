@@ -24,7 +24,7 @@ if {$compile_on || [batch_mode] == 0} {
 
 # Load project
 # eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -GWR_NR=$1 -GRD_NR=$2 -GWRITE_ORDER=$3 -GREAD_ORDER=$4 -GTEST_NAME=$5 -GSEED_VALUE=$6 -sva top
-  eval vsim -novopt -quiet -coverage +notimingchecks +nowarnTSCALE -GWR_NR=$1 -GRD_NR=$2 -GWRITE_ORDER=$3 -GREAD_ORDER=$4 -GTEST_NAME=$5 -GSEED_VALUE=$6 -sva top
+  eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -GWR_NR=$1 -GRD_NR=$2 -GWRITE_ORDER=$3 -GREAD_ORDER=$4 -GTEST_NAME=$5 -GSEED_VALUE=$6 -sva top
 # eval vsim -novopt -quiet -coverage +code=bcesft +notimingchecks +nowarnTSCALE -sva top
 
 # Run log/wave commands
@@ -36,7 +36,7 @@ if {[batch_mode] == 0} {
 
 # On brake:
 onbreak {
-  ## save coverage report file (when loading project with coverage)
+  # save coverage report file (when loading project with coverage)
     #eval coverage save "../reports/regression_coverage/coverage_$1.ucdb"
     
   # if [regress_mode]: continue script excution

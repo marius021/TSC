@@ -9,7 +9,7 @@ package instr_register_pkg;
   	ZERO,
     PASSA,
     PASSB,
-    ADD,                           // operatii matematicec
+    ADD,                           // operatii matematice
     SUB,
     MULT,
     DIV,
@@ -17,8 +17,8 @@ package instr_register_pkg;
     POW
   } opcode_t;
 
-  typedef logic signed [31:0] operand_t;   //signed -> cu semn 32 de biti
-  typedef logic signed [61:0] result_t;
+  typedef logic signed [31:0] operand_t;   //signed -> cu semn 32 de biti 
+  typedef logic signed [63:0] result_t;     // dim rez pentru inmultirea a 2 numere are nev de x2 dimensiunea inmultirea numerelor
   typedef logic [4:0] address_t;  // poate sa ia 2^5 valori
   
   typedef struct {   

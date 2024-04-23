@@ -8,7 +8,7 @@ cd ../sim
 :: vsim -gui -do run.do
 :: vsim -c -do run.do
 
-vsim -%7 -do "do run.do %1 %2 %3 %4 %5 %6"
+vsim -%7 -do run.do -do "do run.do %1 %2 %3 %4 %5 %6"
 
 cd ../tools
 
